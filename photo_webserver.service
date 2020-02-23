@@ -1,0 +1,13 @@
+Description=Photo Webserver
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/code/rpi-picture-frame
+ExecStart=/usr/bin/python3 /home/pi/code/rpi-picture-frame/photo_webserver.py > /home/pi/code/rpi-picture-frame/photolog.log
+Restart=always
+SyslogIdentifier=controller
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+	
+		
+	<title>Photo Preview</title>
+		
+	
+
+	
+		
+    <!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+
+<style>
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+         
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+    </style>
+  <body>
+    
+	<div class="container-fluid">
+		<div class="row vertical-align">
+			<div class="col-md-7 text-center">
+
+					<div id="icw-header">
+						<h1>Image Preview</h1>
+					</div>
+                
+				<div id="center_content">
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Pointillism</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Edges</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="cartoon-tab" data-toggle="tab" href="#cartoon" role="tab" aria-controls="profile" aria-selected="false">Cartoony</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Brighter</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Darker</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content"> 
+  <div class="tab-pane card active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <img src="{{user_img1}}" class="card-img-top" alt="Your pic">
+  <div class="card-body">
+    <h5 class="card-title">Image Preview</h5>
+<form method="post"> 
+<input type="hidden" name="img_type" value="im_1">
+<button type="submit" class="btn btn-success" onclick="MyCustFunc()" name="submit_button" id="submit" data-loading-text="Updating...">Publish Photo</button>
+
+<input type="submit" class="btn btn-dark" name="submit_button" value="Start Over">
+</form>
+    <p class="card-text">Share your photo if you like it!</p>
+</div>
+</div>
+
+<div class="tab-pane card" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <img src="{{user_img2}}" class="card-img-top" alt="Your pic">
+  <div class="card-body">
+    <h5 class="card-title">Image Preview</h5>
+<form method="post"> 
+<input type="hidden" name="img_type" value="im_2">
+<button type="submit" class="btn btn-success" onclick="MyCustFunc()" name="submit_button" id="submit">Publish Photo</button>
+
+<input type="submit" class="btn btn-dark" name="submit_button" value="Start Over">
+</form>
+    <p class="card-text">Share your photo if you like it!</p>
+</div>
+</div>
+
+  <div class="tab-pane card" id="cartoon" role="tabpanel" aria-labelledby="cartoon-tab">
+  <img src="{{user_img5}}" class="card-img-top" alt="Your pic">
+  <div class="card-body">
+    <h5 class="card-title">Image Preview</h5>
+<form method="post"> 
+<input type="hidden" name="img_type" value="im_5">
+<button type="submit" class="btn btn-success" onclick="MyCustFunc()" name="submit_button" id="submit">Publish Photo</button>
+
+<input type="submit" class="btn btn-dark"  name="submit_button" value="Start Over">
+</form>
+    <p class="card-text">Share your photo if you like it!</p>
+</div>
+</div>
+
+
+
+
+  <div class="tab-pane card" id="messages" role="tabpanel" aria-labelledby="messages-tab"> 
+  <img src="{{user_img3}}" class="card-img-top" alt="Your pic">
+  <div class="card-body">
+    <h5 class="card-title">Image Preview</h5>
+<form method="post"> 
+<input type="hidden" name="img_type" value="im_3">
+<button type="submit" class="btn btn-success" onclick="MyCustFunc()" name="submit_button" id="submit">Publish Photo</button>
+
+<input type="submit" class="btn btn-dark" name="submit_button" value="Start Over">
+</form>
+    <p class="card-text">Share your photo if you like it!</p>
+</div>
+</div>
+
+  <div class="tab-pane card" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+  <img src="{{user_img4}}" class="card-img-top" alt="Your pic">
+  <div class="card-body">
+    <h5 class="card-title">Image Preview</h5>
+<form method="post"> 
+<input type="hidden" name="img_type" value="im_4">
+<button type="submit" class="btn btn-success" onclick="MyCustFunc()" name="submit_button" id="submit">Publish Photo</button>
+
+<input type="submit" class="btn btn-dark" name="submit_button" value="Start Over">
+</form>
+    <p class="card-text">Share your photo if you like it!</p>
+</div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function() {
+  $('.btn').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i>Updating...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 20000);
+  });
+})
+        </script>
+
+<script>
+function MyCustFunc(){
+$('#submit').text('Loading...');
+ $(this).submit('loading').delay(8000).queue(function(){});}
+
+        </script>
+
+  </body>
+</html>

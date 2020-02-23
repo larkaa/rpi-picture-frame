@@ -1,0 +1,13 @@
+Description=RQ worker
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/code/rpi-picture-frame
+ExecStart=/usr/bin/python3 /home/pi/code/rpi-picture-frame/worker.py
+Restart=always
+SyslogIdentifier=controller
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target
